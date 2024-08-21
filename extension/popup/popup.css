@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+}
+/* Base styling for popup */
+.popup {
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  width: 480px;
+  margin:0;
+}
+
+/* Header styles */
+.header {
+  margin: 1em 0;
+}
+
+.header__title {
+  padding:0;
+  margin:0;
+  font-size: 24px;
+}
+
+/* Navigation styles */
+.nav {}
+.nav__list {
+  list-style: none;
+  padding: 0;
+}
+
+.nav__item {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+
+.section {
+   margin: 0.5em 0;
+}
+.section__title {
+  margin: 0.5em 0;
+}
+
+/* Main content area styles */
+.main {}
+
+.section {
+
+}
+
+/* ToDo */
+
+
+.siteList {
+  width:100%;
+}
+
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type="number"] {
+  /* width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+   */
+}
+
+button {
+  /* margin-top: 20px;
+  padding: 10px 20px; */
+  cursor: pointer;
+}
+
+.quota-gauge {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+.quota-gauge__value {
+  height: 15px;
+  background-color: #4CAF50;
+  width: 0%; /* Initial width, will be set by JavaScript */
+}
+
+.quota-detail__stamina {
+  
+}
+.quota-detail__current {
+  font-size:140%
+}
+.quota-detail__capacity {
+  
+}
+.quota-detail__recovery {
+  font-size : 80%;
+}
+ p {
+  margin:0.5em 0;
+  padding:0;
+
+ }
+ .saved {
+  padding: 8px 15px;
+  background-color: #e0f4ff;
+  border: 1px solid #a6d8ff;
+  border-radius: 10px;
+  color: #333;
+  margin:0.5em 0;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+/* Base button styles */
+.button {
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s, color 0.3s;
+  display: inline-block;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+/* Main button style */
+.button.button__main {
+  background-color: #007BFF;
+  color: #ffffff;
+}
+
+.button.button__main:hover {
+  background-color: #0056b3;
+}
+
+/* Cancel button style */
+.button.button__cancel {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+.button.button__cancel:hover {
+  background-color: #545b62;
+}

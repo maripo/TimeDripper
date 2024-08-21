@@ -1,0 +1,53 @@
+<!-- popup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Blocker</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body class="popup">
+    <header class="header">
+        <h1 class="header__title">Site Blocker</h1>
+        <nav class="nav">
+          <ul class="nav__list">
+            <li class="nav__item"><a href="popup.html" class="nav__link" data-i18n="navTop">Home</a></li>
+            <li class="nav__item"><a href="list.html" class="nav__link" data-i18n="navSites">Sites</a></li>
+            <li class="nav__item"><a href="config.html" class="nav__link" data-i18n="navConfig">Config</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main class="main">
+            <section class="section">
+                <h2 class="h2 section__title" data-i18n="titleBlockList">Block List</h2>
+                <p data-i18n="descriptionBlockList">
+                    Add URLs to this list to count the time spent on matching pages towards your usage limit. 
+                </p>
+                <textarea class="siteList" id="js_blockList" placeholder="Enter blocked sites" rows="8"></textarea>
+            </section>
+            <section class="section">
+                <h2 class="h2 section__title" data-i18n="titleAllowList">Allow List</h2>
+                <p data-i18n="descriptionAllowList">
+                    Add URLs to this list to exclude the time spent on matching pages from your usage count. Allow list rules take precedence over Blocked list rules.
+                </p>
+                <textarea class="siteList" id="js_allowList" placeholder="Enter allowed sites" rows="8"></textarea>
+            </section>
+            <section class="section">
+                <p data-i18n="noteUrl">
+                    Please omit 'https://' from URLs. Use '*' as a wildcard to match any sequence of characters. Rules apply to the beginning of the URL.
+                </p>
+            </section>
+            <div>
+                <button data-i18n="buttonSave" id="js_save" class="button button__main">Save</button>
+                <button data-i18n="buttonCancel" type="button" class="button button__cancel" id="js_cancelBtn">Cancel</button>
+            </div>
+            <div class="saved" data-i18n="savedList" id="js_savedMessage" style="display:none">
+                サイトのリストを保存しました。
+            </div>
+        </div>
+    </main>
+    <script src="list.js"></script>
+    <script src="../src/i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blocked</title>
+  <link rel="stylesheet" href="popup/popup.css">
+  <link rel="stylesheet" href="blocked.css">
+</head>
+<body>
+  <main>
+    <h1 data-i18n="blockedTitle">Blocked</h1>
+    <p data-i18n="blockedDescription">
+      Your time quota has been exceeded, and access to this site is currently restricted. Please try again later.
+    </p>
+    <div class="quota-detail">
+      <div class="quota-detail__stamina">
+        <span id="js_currentQuota" class="quota-detail__current"></span>
+        <span class="quota-detail__capacity"> 
+          / <span id="js_maxQuota"></span>
+      </span>
+      </div>
+      <div id="js_staminaGaugeContainer" class="quota-gauge">
+        <div id="js_staminaGauge" class="quota-gauge__value"></div>
+      </div>
+      <div class="quota-detail__recovery" style="visibility: hidden;" id="js_labelNextRecovery">
+        <span data-i18n="labelNextRecoveryIn">Next Recovery in</span> <span id="js_timeToNextRecovery"></span> seconds
+      </div>
+
+    </div>
+    <div>
+      <div id="originalLinkContainer">
+        <span data-i18n="labelOriginalLink">
+          Go back to the original site
+        </span>
+        <a id="js_originalLink"></a>
+      </div>
+    </div>
+    <script src="src/blocked.js"></script>
+    <script src="src/i18n.js"></script>
+  </main>
+</body>
+</html>

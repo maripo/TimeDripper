@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+    "name": "Site Blocker",
+    "version": "1.0",
+    "description": "Blocks specified websites to help focus.",
+    "icons": {
+      "48": "icon/light/inactive_100.png"
+    },
+    "permissions": [
+      "storage",
+      "webRequest",
+      "webRequestBlocking",
+      "<all_urls>"
+    ],
+    "background": {
+      "scripts": ["src/background.js"]
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["src/content-script.js"],
+        "run_at": "document_start"
+      }
+    ],
+    "browser_action": {
+      "default_icon": "icon/light/inactive_100.png",
+      "default_popup": "popup/popup.html",
+      "default_title": "Site Blocker"
+    },
+    "content_security_policy": "script-src 'self'; object-src 'self'"
+  }
+  
