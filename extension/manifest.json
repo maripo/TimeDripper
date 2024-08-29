@@ -1,10 +1,10 @@
 {
     "manifest_version": 2,
-    "name": "Site Blocker",
+    "name": "TimeDripper",
     "version": "1.0",
     "description": "Blocks specified websites to help focus.",
     "icons": {
-      "48": "icon/light/inactive_100.png"
+      "48": "icon/app/app_icon.png"
     },
     "permissions": [
       "storage",
@@ -25,7 +25,7 @@
     "browser_action": {
       "default_icon": "icon/light/inactive_100.png",
       "default_popup": "popup/popup.html",
-      "default_title": "Site Blocker"
+      "default_title": "TimeDripper"
     },
     "content_security_policy": "script-src 'self'; object-src 'self'"
   }

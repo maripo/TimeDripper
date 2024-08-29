@@ -20,7 +20,7 @@ const translations = {
         savedList: "The list of sites has been saved.",
         savedConfig: "The settings have been saved.",
         labelOriginalLink: "Go back to the original site ",
-        blockedTitle: "Blocked",
+        blockedTitle: "Blocked by TimeDripper",
         blockedDescription: "Your time quota has been exceeded, and access to this site is currently restricted. Please try again later."
         
     },
@@ -45,7 +45,7 @@ const translations = {
         savedList: "サイトのリストを保存しました。",
         savedConfig: "設定を保存しました。",
         labelOriginalLink: "元のサイトに戻る ",
-        blockedTitle: "ブロックされました",
+        blockedTitle: "TimeDripperがブロックしました",
         blockedDescription: "制限時間を超過したため、このサイトへのアクセスが制限されています。しばらくしてから再度アクセスしてください。"
     }
 }
