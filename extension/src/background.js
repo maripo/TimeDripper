@@ -52,14 +52,13 @@ function formatBadgeText(seconds) {
 }
 
 function updateBadge(quota) {
-  /*
+  const badgeText = config.showQuotaOnBadge ? formatBadgeText(quota.current):"";
   browser.browserAction.setBadgeText({
-    text: formatBadgeText(quota.current)
+    text: badgeText
   });
   browser.browserAction.setBadgeBackgroundColor({
-    color: "#FFFFFF00"
+    color: "#FFFFFF88"
   });
-  */
   const tooltip = formatTime(quota.current) + "/" + formatTime(quota.max);
   browser.browserAction.setTitle({
     title: tooltip

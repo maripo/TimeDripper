@@ -2,9 +2,11 @@
     "manifest_version": 2,
     "name": "TimeDripper",
     "version": "1.0",
-    "description": "Blocks specified websites to help focus.",
+    "description": "Limits access time to specific websites. The access time gradually recovers at a consistent pace.",
     "icons": {
-      "48": "icon/app/app_icon.png"
+      "16": "icon/app/app_icon_16.png",
+      "48": "icon/app/app_icon_48.png",
+      "128": "icon/app/app_icon_128.png"
     },
     "permissions": [
       "storage",

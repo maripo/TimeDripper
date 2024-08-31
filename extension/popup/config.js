@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setConfigValue('js_maxQuota', config.maxQuotaSec, ['3600', '60', '1']);
         setConfigValue('js_recoveryInterval', config.recoveryIntervalSec, ['3600', '60', '1']);
         setConfigValue('js_recoveryAmount', config.recoveryAmountSec, ['60', '1']);
+        document.getElementById('js_showQuotaOnBadge').checked = config.showQuotaOnBadge || false;
     });
 
     function setConfigValue(field, seconds, units) {
@@ -23,10 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxQuota = document.getElementById('js_maxQuota').value * document.getElementById('js_maxQuotaUnit').value;
         const recoveryInterval = document.getElementById('js_recoveryInterval').value * document.getElementById('js_recoveryIntervalUnit').value;
         const recoveryAmount = document.getElementById('js_recoveryAmount').value * document.getElementById('js_recoveryAmountUnit').value;
+        const showQuotaOnBadge = document.getElementById('js_showQuotaOnBadge').checked;
         const config = { 
             maxQuotaSec: maxQuota, 
             recoveryIntervalSec: recoveryInterval, 
-            recoveryAmountSec: recoveryAmount 
+            recoveryAmountSec: recoveryAmount,
+            showQuotaOnBadge: showQuotaOnBadge
         };
         browser.runtime.sendMessage({
             action: "setConfig",

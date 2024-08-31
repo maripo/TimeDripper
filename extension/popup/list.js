@@ -21,8 +21,8 @@ document.getElementById('js_save').addEventListener('click', () => {
 
 browser.runtime.sendMessage({action: "requestList"}).then(response => {
   console.debug(response);
-  document.getElementById("js_blockList").innerHTML = response["block"].join("\n");
-  document.getElementById("js_allowList").innerHTML = response["allow"].join("\n");
+  document.getElementById("js_blockList").textContent = response["block"].join("\n");
+  document.getElementById("js_allowList").textContent = response["allow"].join("\n");
 });
     document.getElementById('js_cancelBtn').addEventListener('click', function() {
         window.close();

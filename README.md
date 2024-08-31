@@ -12,8 +12,18 @@ This is a pre-store preview release of the extension. The version here is intend
 3. Click on the gear icon, then choose 'Install Add-on From File'.
 4. Select the downloaded file and accept the installation prompt.
 
+## Manual
+* We recommend pinning the TimeDripper icon to your Firefox toolbar for easy access. This allows you to quickly check your remaining time at a glance.
+* Clicking the TimeDripper icon opens a popup where you can manage various settings:
+
+  * Sites Tab: Configure Blocked and Allowed Sites: Here, you can add website you want to restrict access to or allow specific sites. You can use wildcards in URLs for more flexible control.
+
+  * Settings Tab: 
+    * Manage Time Limits: Customize the maximum amount of time, the frequency of recovery, and the amount of time recovered at once. This allows you to finely tune TimeDripper according to your usage. 
+    * Badge Display Settings: Choose whether to display the remaining time as a badge on the TimeDripper icon. This helps you keep track of time even while browsing.
+    * 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE.md file for details.
 
 ## Contact and Collaboration
 We welcome your feedback and contributions! Please feel free to raise issues on GitHub or contact us through Twitter for any suggestions or enhancements.

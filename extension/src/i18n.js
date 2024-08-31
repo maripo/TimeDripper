@@ -21,7 +21,8 @@ const translations = {
         savedConfig: "The settings have been saved.",
         labelOriginalLink: "Go back to the original site ",
         blockedTitle: "Blocked by TimeDripper",
-        blockedDescription: "Your time quota has been exceeded, and access to this site is currently restricted. Please try again later."
+        blockedDescription: "Your time quota has been exceeded, and access to this site is currently restricted. Please wait until your time recharges.",
+        labelShowQuotaOnBadge: "Display remaining time on badge"
         
     },
     ja: {
@@ -46,7 +47,8 @@ const translations = {
         savedConfig: "設定を保存しました。",
         labelOriginalLink: "元のサイトに戻る ",
         blockedTitle: "TimeDripperがブロックしました",
-        blockedDescription: "制限時間を超過したため、このサイトへのアクセスが制限されています。しばらくしてから再度アクセスしてください。"
+        blockedDescription: "制限時間を超過したため、このサイトへのアクセスが制限されています。制限時間が回復するまでお待ちください。",
+        labelShowQuotaOnBadge: "バッジに残り時間を表示する"
     }
 }
 let lang;
