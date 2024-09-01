@@ -21,7 +21,7 @@ This is a pre-store preview release of the extension. The version here is intend
   * Settings Tab: 
     * Manage Time Limits: Customize the maximum amount of time, the frequency of recovery, and the amount of time recovered at once. This allows you to finely tune TimeDripper according to your usage. 
     * Badge Display Settings: Choose whether to display the remaining time as a badge on the TimeDripper icon. This helps you keep track of time even while browsing.
-    * 
+    
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details.
 
