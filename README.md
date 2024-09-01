@@ -3,6 +3,16 @@
 This Firefox extension helps you manage your time more effectively by blocking access to specified websites. 
 The time limit for site access gradually recovers at a set pace.
 
+## Concept
+
+TimeDripper is designed to reduce psychological stress and facilitate effortless self-control.
+
+Traditional browsing restriction tools typically limit usage to a fixed number of minutes per day. This often leads users to overly focus on how much daily browsing time they have left, which can be counterproductive. If one inadvertently uses up their allotted time, being blocked until the end of the day can feel excessively punitive. This may lead to users discontinuing the use of the tool or abandoning it altogether.
+
+In contrast, TimeDripper’s gradual recovery of browsing time alleviates these concerns. It operates similarly to the stamina systems found in social games, where resources slowly replenish over time, making it less likely for users to feel restricted or penalized.
+
+We hope you will use it in a positive and relaxed way, like taking the time to brew a cup of coffee.
+
 ## About Preview Release
 This is a pre-store preview release of the extension. The version here is intended for testing and feedback purposes and may contain unfinished features.
 
