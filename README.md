@@ -9,7 +9,7 @@ TimeDripper is designed to reduce psychological stress and facilitate effortless
 
 Traditional browsing restriction tools typically limit usage to a fixed number of minutes per day. This often leads users to overly focus on how much daily browsing time they have left, which can be counterproductive. If one inadvertently uses up their allotted time, being blocked until the end of the day can feel excessively punitive. This may lead to users discontinuing the use of the tool or abandoning it altogether.
 
-In contrast, TimeDripper’s gradual recovery of browsing time alleviates these concerns. It operates similarly to the stamina systems found in social games, where resources slowly replenish over time, making it less likely for users to feel restricted or penalized.
+In contrast, TimeDripper’s gradual recovery of browsing time alleviates these concerns. After a short time, the resting time will be recharged again. It operates similarly to the stamina systems found in social games, where resources slowly replenish over time, making it less likely for users to feel restricted or penalized.
 
 We hope you will use it in a positive and relaxed way, like taking the time to brew a cup of coffee.
 
