@@ -1,14 +1,15 @@
 let sites = {
   block: [
+    "x.com",
     "www.facebook.com",
     "www.youtube.com",
     "www.reddit.com",
-    "x.com",
     "www.tiktok.com",
     "www.netflix.com",
     "www.buzzfeed.com",
+    "www.instagram.com",
     "www.pinterest.com",
-    "www.linkedin.com"
+    "www.nicovideo.jp"
   ],
   allow: [
   ]

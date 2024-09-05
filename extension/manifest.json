@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "TimeDripper",
-    "version": "1.0",
+    "version": "1.0.1",
     "description": "Limits access time to specific websites. The access time gradually recovers at a consistent pace.",
     "icons": {
       "16": "icon/app/app_icon_16.png",

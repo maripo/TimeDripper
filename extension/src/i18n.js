@@ -3,7 +3,7 @@ const translations = {
         navTop: "Home",
         navSites: "Sites",
         navConfig: "Config",
-        labelNextRecoveryIn: "Next Recovery in",
+        labelNextRecoveryIn: "Next recovery in",
         buttonSave: "Save",
         buttonCancel: "Cancel",
         unitSeconds: "Seconds",

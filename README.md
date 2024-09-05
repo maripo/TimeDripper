@@ -13,6 +13,8 @@ In contrast, TimeDripper’s gradual recovery of browsing time alleviates these 
 
 We hope you will use it in a positive and relaxed way, like taking the time to brew a cup of coffee.
 
+https://addons.mozilla.org/en-US/firefox/addon/timedripper/
+
 ## About Preview Release
 This is a pre-store preview release of the extension. The version here is intended for testing and feedback purposes and may contain unfinished features.
 
