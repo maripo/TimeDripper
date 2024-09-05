@@ -25,7 +25,7 @@ From this GitHub repository, you can install the development version.
 1. Download the latest release from this repository.
 2. Open Firefox and navigate to `about:addons`.
 3. Click on the gear icon, then choose 'Install Add-on From File'.
-4. Select the downloaded file and accept the installation prompt.
+4. Select `extension/manifest.json`　and accept the installation prompt.
 
 ## Manual
 * We recommend pinning the TimeDripper icon to your Firefox toolbar for easy access. This allows you to quickly check your remaining time at a glance.
