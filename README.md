@@ -13,12 +13,15 @@ In contrast, TimeDripper’s gradual recovery of browsing time alleviates these 
 
 We hope you will use it in a positive and relaxed way, like taking the time to brew a cup of coffee.
 
+## Install
+
+This extension can be installed from the Mozilla site.
 https://addons.mozilla.org/en-US/firefox/addon/timedripper/
 
-## About Preview Release
-This is a pre-store preview release of the extension. The version here is intended for testing and feedback purposes and may contain unfinished features.
+## How to install the development version
 
-## Installation Instructions for Firefox
+From this GitHub repository, you can install the development version.
+
 1. Download the latest release from this repository.
 2. Open Firefox and navigate to `about:addons`.
 3. Click on the gear icon, then choose 'Install Add-on From File'.
