@@ -24,6 +24,12 @@ let appState = {
   blockedTabIds:[],
   isBlocking: false,
 }
+let quota = {
+  current: config.maxQuotaSec,
+  max: config.maxQuotaSec,
+  lastUpdated: new Date().getTime(),
+  nextUpdate: new Date().getTime()
+}
 
 function formatTime(seconds) {
   const hours = Math.floor(seconds / 3600);
@@ -98,21 +104,13 @@ function isUrlBlocked(url, blockUrlList, allowUrlList) {
 
   return false;
 }
-let quota = {
-  current: 10 * 60,
-  max: 10 * 60,
-  lastUpdated: new Date().getTime(),
-  nextUpdate: new Date().getTime()
-}
 function initExtension() {
   browser.storage.local.get(["quota", "sites", "config"]).then(data => {
     if (data.quota && data.quota.current >= 0 && data.quota.lastUpdated > 0) {
-      console.debug("Found data.")
       quota = data.quota;
 
     }
     if (data.sites) {
-      console.debug("Sites loaded.")
       console.debug(data.sites)
       sites = data.sites;
     }
@@ -171,6 +169,8 @@ function initExtension() {
     } else if (message.action == "onClosePopup") {
       popupVisibleCount--;
   
+    } else if (message.action == "openHelp") {
+      showWelcomePage()
     }
   });
 }
@@ -272,8 +272,25 @@ browser.tabs.onUpdated.addListener(window => {
   updateTabs(appState, "tabs.onUpdated");
 });
 */
-
+let lang = getUserLanguage();
 const blockedPageUrl = browser.runtime.getURL("blocked.html");
+
+
+const welcomeUpdatedVersion = "1.0.3";
+browser.runtime.onInstalled.addListener((details) => {
+  console.log("browser.runtime.onInstalled")
+  console.log(details)
+
+  if (details.reason === "update") {
+    const result = compareVersions(welcomeUpdatedVersion, details.previousVersion);
+    if (result == 1) {
+      showWelcomePage();
+    }
+  }
+  if (details.reason === "install") {
+    showWelcomePage();
+  }
+});
 // let isBlocking = false;
 let activeTabId = -1;
 function getIconSuffix(percentage) {

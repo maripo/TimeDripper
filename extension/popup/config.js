@@ -47,3 +47,5 @@ document.addEventListener('DOMContentLoaded', function() {
         window.close();
     });
 });
+
+document.getElementById("js_help").addEventListener("click", showWelcomePageBg)

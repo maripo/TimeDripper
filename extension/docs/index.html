@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimeDripper</title>
+  <link rel="stylesheet" href="../popup/popup.css">
+  <link rel="stylesheet" href="doc.css">
+</head>
+<body>
+  <main class="main">
+    <h1 class="h1 h1--global">TimeDripper</h1>
+    <p class="paragraph">Thank you for installing.</p>
+    <p class="paragraph">We recommend pinning the TimeDripper icon to your toolbar.</p>
+    <p class="paragraph">
+      Click on the extension icon in the toolbar
+      <img class="icon_sm" src="img/extension_icon.png"/>
+      to display the list of extensions. Find TimeDripper, and select "<span class="label--strong">Pin to toolbar</span>" from the gear icon menu on the right.
+    </p>
+    <img class="img_half" src="img/pin_menu_en.png"/>
+    <p class="paragraph">
+      Having the icon visible allows you to:</p>
+    <ul class="list list-simple">
+        <li>
+          Roughly understand the remaining time.
+          <div>
+            <img class="icon_sm" src="../icon/light/inactive_0.png"/>
+            <img class="icon_sm" src="../icon/light/inactive_20.png"/>
+            <img class="icon_sm" src="../icon/light/inactive_40.png"/>
+            <img class="icon_sm" src="../icon/light/inactive_60.png"/>
+            <img class="icon_sm" src="../icon/light/inactive_80.png"/>
+            <img class="icon_sm" src="../icon/light/inactive_100.png"/>
+          </div>
+        </li>
+        <li>Know if the current site is consuming your time quota.
+          <table class="table">
+            <tr>
+              <th>ON</th>
+              <th>OFF</th>
+            </tr>
+            <tr>
+              <td>
+                <img class="icon_sm" src="../icon/light/active_60.png"/>
+              </td>
+              <td>
+                <img class="icon_sm" src="../icon/light/inactive_60.png"/>
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>
+          If you check “<span data-i18n="labelShowQuotaOnBadge" class="label--strong">Display remaining time on badge</span>” in settings, the remaining time will be displayed on the badge.
+          <div>
+            <img class="icon_sm" src="img/icon_remaining.png"/>
+          </div>
+        </li>
+    </ul>
+    <p class="paragraph">
+      Clicking on the icon allows you to edit the settings.
+    </p>
+    <ul class="list list-simple">
+        <li>Sites
+            <ul>
+                <li><span data-i18n="titleBlockList" class="label--strong">Block list</span> Sites that are subject to time limits. You can use ‘*’ as a wildcard.</li>
+                <li><span data-i18n="titleAllowList" class="label--strong">Allow list</span> Sites that are not subject to time limits. This list takes precedence over the Block list.</li>
+            </ul>
+        </li>
+        <li>Settings
+            <ul>
+                <li><span data-i18n="labelMaxQuota" class="label--strong">Max Quota</span> The maximum time limit. Viewing time will not recover beyond this time.</li>
+                <li><span data-i18n="labelRecoveryInterval" class="label--strong">Recovery Interval</span> The interval at which time limits recover.</li>
+                <li><span data-i18n="labelRecoveryAmount" class="label--strong">Recovery Amount</span> The amount of time that recovers.</li>
+            </ul>
+        </li>
+    </ul>
+    <p class="paragraph">For example,</p>
+    <ul class="list list-simple">
+        <li><span data-i18n="labelMaxQuota" class="label--strong">Max Quota</span> = 10 minutes</li>
+        <li><span data-i18n="labelRecoveryInterval" class="label--strong">Recovery Interval</span> = 6 minutes</li>
+        <li><span data-i18n="labelRecoveryAmount" class="label--strong">Recovery Amount</span> = 1 minute</li>
+    </ul>
+    <p class="paragraph">With these settings, your time limit recovers by 1 minute every 6 minutes. After an hour from being empty, the full 10 minutes will be recharged. Try different settings to match your lifestyle and rhythm.</p>
+  </main>
+  <script src="../src/i18n.js"></script>
+</body>
+</html>

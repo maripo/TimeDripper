@@ -22,7 +22,8 @@ const translations = {
         labelOriginalLink: "Go back to the original site ",
         blockedTitle: "Blocked by TimeDripper",
         blockedDescription: "Your time quota has been exceeded, and access to this site is currently restricted. Please wait until your time recharges.",
-        labelShowQuotaOnBadge: "Display remaining time on badge"
+        labelShowQuotaOnBadge: "Display remaining time on badge",
+        navHelp: "Help"
         
     },
     ja: {
@@ -48,7 +49,8 @@ const translations = {
         labelOriginalLink: "元のサイトに戻る ",
         blockedTitle: "TimeDripperがブロックしました",
         blockedDescription: "制限時間を超過したため、このサイトへのアクセスが制限されています。制限時間が回復するまでお待ちください。",
-        labelShowQuotaOnBadge: "バッジに残り時間を表示する"
+        labelShowQuotaOnBadge: "バッジに残り時間を表示する",
+        navHelp: "ヘルプ"
     }
 }
 let lang;
@@ -60,6 +62,7 @@ if (navigator.languages) {
 }
 
 console.log("Selected language:", lang);
+console.log(navigator.languages)
 
 function updateTexts(lang) {
     document.querySelectorAll("[data-i18n]").forEach(el => {

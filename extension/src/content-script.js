@@ -1,8 +1,5 @@
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    console.debug("Message from the background script:");
-    console.debug(message)
     if (message.blocked && message.remaining <= 0 && message.blockedPage) {
-      console.debug("Matched")
       location.href = message.blockedPage + "?url=" + encodeURIComponent(location.href)
     } else {
     }
@@ -16,6 +13,6 @@ document.addEventListener("visibilitychange", function() {
       visibility: !document.hidden
     }
     browser.runtime.sendMessage(payload).then(response => {
-        console.debug(response);
+        // console.debug(response);
     });
 });

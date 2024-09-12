@@ -20,7 +20,6 @@ function formatTime(seconds) {
 }
 document.addEventListener('DOMContentLoaded', function () {
   browser.runtime.sendMessage({ action: "getQuota" }).then(quota => {
-    console.debug(quota)
     updateQuotaDisplay(quota);
   });
 });
@@ -35,12 +34,13 @@ function updateQuotaDisplay(quota) {
   document.getElementById('js_currentQuota').textContent = formatTime(quota.current);
   document.getElementById('js_maxQuota').textContent = formatTime(quota.max);
   countdown();
+  document.getElementById("js_labelNextRecovery").style.visibility = 
+    quota.current < quota.max? "visible":"hidden"
 }
 function countdown () {
   const currentTime = Date.now();
   const timeToNextRecovery = Math.max(0, Math.floor((nextUpdate - currentTime) / 1000));
   console.debug("timeToNextRecovery(popup.html)=" + timeToNextRecovery)
-  document.getElementById("js_labelNextRecovery").style.visibility = "visible"
   document.getElementById('js_timeToNextRecovery').textContent = timeToNextRecovery;
 }
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -49,4 +49,5 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     updateQuotaDisplay(message.quota);
   }
 });
+document.getElementById("js_help").addEventListener("click", showWelcomePageBg)
 setInterval(countdown, 1000);

@@ -24,6 +24,7 @@ browser.runtime.sendMessage({action: "requestList"}).then(response => {
   document.getElementById("js_blockList").textContent = response["block"].join("\n");
   document.getElementById("js_allowList").textContent = response["allow"].join("\n");
 });
-    document.getElementById('js_cancelBtn').addEventListener('click', function() {
-        window.close();
-    });
+document.getElementById('js_cancelBtn').addEventListener('click', function() {
+    window.close();
+});
+document.getElementById("js_help").addEventListener("click", showWelcomePageBg)

@@ -15,6 +15,7 @@
             <li class="nav__item"><a href="popup.html" class="nav__link" data-i18n="navTop">Home</a></li>
             <li class="nav__item"><a href="list.html" class="nav__link" data-i18n="navSites">Sites</a></li>
             <li class="nav__item"><a href="config.html" class="nav__link" data-i18n="navConfig">Config</a></li>
+            <li class="nav__item"><a id="js_help" href="#" class="nav__link" data-i18n="navHelp">Help</a></li>
         </ul>
     </nav>
     </header>
@@ -23,7 +24,7 @@
             <form id="configForm">
                 <section class="section">
                     <div class="config-item">
-                        <label for="js_maxQuota" data-i18n="labelMaxQuota">Max quota</label>
+                        <label for="js_maxQuota" data-i18n="labelMaxQuota">Max Quota</label>
                         <input type="number" id="js_maxQuota" name="js_maxQuota" min="1">
                         <select id="js_maxQuotaUnit">
                             <option data-i18n="unitSeconds" value="1">Seconds</option>
@@ -70,6 +71,7 @@
         </div>
       
     </main>
+    <script src="../src/util.js"></script>
     <script src="config.js"></script>
     <script src="../src/i18n.js"></script>
 </body>

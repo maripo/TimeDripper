@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimeDripper</title>
+  <link rel="stylesheet" href="../popup/popup.css">
+  <link rel="stylesheet" href="doc.css">
+</head>
+<body>
+  <main class="main">
+    <h1 class="h1 h1--global">TimeDripper</h1>
+    <p class="paragraph">インストールありがとうございます。</p>
+    <p class="paragraph">ご利用の際は、ツールバーにTimeDripperのアイコンをピン留めすることをおすすめします。
+    </p>
+    <p class="paragraph">
+      ツールバーの拡張機能アイコン
+      <img class="icon_sm" src="img/extension_icon.png"/>
+      をクリックすると、拡張機能の一覧が表示されますので、TimeDripperを見つけて、右端の歯車アイコンのメニューから "<span class="label--strong">ツールバーにピン留め</span>" を選択してください。
+    </p>
+      <img class="img_half" src="img/pin_menu_ja.png"/>
+    <p class="paragraph">
+      アイコンを表示しておくと</p>
+    <ul class="list list-simple">
+        <li>
+          おおよその残り時間がだいたいわかります。
+          <div>
+            <img class="icon_sm" src="../icon/light/inactive_0.png"/>
+            <img class="icon_sm" src="../icon/light/inactive_20.png"/>
+            <img class="icon_sm" src="../icon/light/inactive_40.png"/>
+            <img class="icon_sm" src="../icon/light/inactive_60.png"/>
+            <img class="icon_sm" src="../icon/light/inactive_80.png"/>
+            <img class="icon_sm" src="../icon/light/inactive_100.png"/>
+          </div>
+        </li>
+        <li>いま表示されているサイトが制限時間を消費しているかどうかがわかります。
+          <table class="table">
+            <tr>
+              <th>ON</th>
+              <th>OFF</th>
+            </tr>
+            <tr>
+              <td>
+                <img class="icon_sm" src="../icon/light/active_60.png"/>
+              </td>
+              <td>
+                <img class="icon_sm" src="../icon/light/inactive_60.png"/>
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>
+          設定で “<span data-i18n="labelShowQuotaOnBadge" class="label--strong">Display remaining time on badge</span>” をチェックすれば残り時間がバッジに表示されます。
+          <div>
+            <img class="icon_sm" src="img/icon_remaining.png"/>
+          </div>
+        </li>
+    </ul>
+    <p class="paragraph">
+      アイコンをクリックすると、設定を編集することができます。
+    </p>
+    <ul class="list list-simple">
+        <li>サイト
+            <ul>
+                <li><span data-i18n="titleBlockList" class="label--strong">Block list</span> 制限時間の対象となるサイトです。「*」をワイルドカードとして使うことができます。</li>
+                <li><span data-i18n="titleAllowList" class="label--strong">Allow list</span> 制限時間の対象とならないサイトです。Block listよりもこちらが優先されます。</li>
+            </ul>
+        </li>
+        <li>設定
+            <ul>
+                <li><span data-i18n="labelMaxQuota" class="label--strong">Max Quota</span> 制限時間の最大値です。この時間をこえて閲覧時間が回復することはありません。</li>
+                <li><span data-i18n="labelRecoveryInterval" class="label--strong">Recovery Interval</span> 制限時間が回復する間隔です。</li>
+                <li><span data-i18n="labelRecoveryAmount" class="label--strong">Recovery Amount</span> 制限時間が回復する量です。</li>
+            </ul>
+        </li>
+    </ul>
+    <p class="paragraph">たとえば、</p>
+    <ul class="list list-simple">
+        <li><span data-i18n="labelMaxQuota" class="label--strong">Max Quota</span> = 10分</li>
+        <li><span data-i18n="labelRecoveryInterval" class="label--strong">Recovery Interval</span> = 6分</li>
+        <li><span data-i18n="labelRecoveryAmount" class="label--strong">Recovery Amount</span> = 1分</li>
+    </ul>
+    <p class="paragraph">という設定にした場合、6分ごとに制限時間が1分回復します。そして、空っぽの状態から1時間経過すると満タンの10分がチャージされます。あなたのライフスタイルや生活リズムに合わせていろいろな設定を試してみてください。</p>
+
+
+  </main>
+  <script src="../src/i18n.js"></script>
+</body>
+</html>

@@ -15,6 +15,7 @@
             <li class="nav__item"><a href="popup.html" class="nav__link" data-i18n="navTop">Home</a></li>
             <li class="nav__item"><a href="list.html" class="nav__link" data-i18n="navSites">Sites</a></li>
             <li class="nav__item"><a href="config.html" class="nav__link" data-i18n="navConfig">Config</a></li>
+            <li class="nav__item"><a id="js_help" href="#" class="nav__link" data-i18n="navHelp">Help</a></li>
           </ul>
         </nav>
       </header>
@@ -38,15 +39,16 @@
                     Please omit 'https://' from URLs. Use '*' as a wildcard to match any sequence of characters. Rules apply to the beginning of the URL.
                 </p>
             </section>
+            <div class="saved" data-i18n="savedList" id="js_savedMessage" style="display:none">
+                サイトのリストを保存しました。
+            </div>
             <div>
                 <button data-i18n="buttonSave" id="js_save" class="button button__main">Save</button>
                 <button data-i18n="buttonCancel" type="button" class="button button__cancel" id="js_cancelBtn">Cancel</button>
             </div>
-            <div class="saved" data-i18n="savedList" id="js_savedMessage" style="display:none">
-                サイトのリストを保存しました。
-            </div>
         </div>
     </main>
+    <script src="../src/util.js"></script>
     <script src="list.js"></script>
     <script src="../src/i18n.js"></script>
 </body>
