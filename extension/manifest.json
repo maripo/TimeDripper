@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "TimeDripper",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "description": "Limits access time to specific websites. The access time gradually recovers at a consistent pace.",
     "icons": {
       "16": "icon/app/app_icon_16.png",
@@ -15,12 +15,12 @@
       "<all_urls>"
     ],
     "background": {
-      "scripts": ["src/util.js", "src/background.js"]
+      "scripts": ["src/util.js", "src/tab-manager.js", "src/background.js"]
     },
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
-        "js": ["src/content-script.js"],
+        "js": ["src/idle-detector.js", "src/content-script.js"],
         "run_at": "document_start"
       }
     ],

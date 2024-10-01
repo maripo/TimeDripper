@@ -23,7 +23,13 @@ const translations = {
         blockedTitle: "Blocked by TimeDripper",
         blockedDescription: "Your time quota has been exceeded, and access to this site is currently restricted. Please wait until your time recharges.",
         labelShowQuotaOnBadge: "Display remaining time on badge",
-        navHelp: "Help"
+        navHelp: "Help",
+
+        idleTitle: "Are you still there?",
+        idleDescription: "This screen is displayed due to inactivity for a long time. While this screen is displayed, TimeDripper has paused the countdown.",
+        idleGuide: "Click to return to the previous site.",
+
+        labelEnableIdleDetection: "Enable idle detection"
         
     },
     ja: {
@@ -50,7 +56,13 @@ const translations = {
         blockedTitle: "TimeDripperがブロックしました",
         blockedDescription: "制限時間を超過したため、このサイトへのアクセスが制限されています。制限時間が回復するまでお待ちください。",
         labelShowQuotaOnBadge: "バッジに残り時間を表示する",
-        navHelp: "ヘルプ"
+        navHelp: "ヘルプ",
+
+        idleTitle: "お席を外されていますか?",
+        idleDescription: "長時間操作がなかったため、この画面が表示されています。このスクリーンが表示されている間、TimeDripperはカウントダウンを停止しています。",
+        idleGuide: "クリックすると元のサイトに戻ります。",
+
+        labelEnableIdleDetection: "放置状態を検出する"
     }
 }
 let lang;

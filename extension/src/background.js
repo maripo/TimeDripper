@@ -1,4 +1,4 @@
-let sites = {
+let SITES_DEFAULT = {
   block: [
     "x.com",
     "www.facebook.com",
@@ -14,14 +14,18 @@ let sites = {
   allow: [
   ]
 };
+const tabManager = new TabManager();
+tabManager.setSites(SITES_DEFAULT);
 let config = {
   maxQuotaSec: 60 * 15, // 15min
   recoveryIntervalSec: 60 * 1, // 1min
-  recoveryAmountSec: 5 // 5 sec
+  recoveryAmountSec: 5, // 5 sec
+  showQuotaOnBadge: false,
+  enableIdleDetection: false
+
 };
 let appState = {
   blocking: false,
-  blockedTabIds:[],
   isBlocking: false,
 }
 let quota = {
@@ -74,36 +78,6 @@ function updateBadge(quota) {
 function removeProtocol(url) {
   return url.replace(/^(?:https?:\/\/)?/i, "");
 }
-function wildcardToRegex(pattern) {
-  // Convert wildcard domain pattern to regex
-  const regexPattern = pattern
-    .replace(/\./g, '\\.') // Escape dot for regex
-    .replace(/\*/g, '.*') // Convert * to .* in regex for wildcard matching
-    .replace(/\/\//g, '\/\/') // Ensure slashes are interpreted correctly
-    + (pattern.endsWith('/') ? '' : '(\/|$)'); // Match end of domain/path
-
-  return new RegExp('^https?:\/\/' + regexPattern, 'i');
-}
-
-function isUrlBlocked(url, blockUrlList, allowUrlList) {
-  if (!url) return false;
-
-  for (let allowPattern of allowUrlList) {
-    const allowRegex = wildcardToRegex(allowPattern);
-    if (allowRegex.test(url)) {
-      return false;
-    }
-  }
-
-  for (let blockPattern of blockUrlList) {
-    const blockRegex = wildcardToRegex(blockPattern);
-    if (blockRegex.test(url)) {
-      return true;
-    }
-  }
-
-  return false;
-}
 function initExtension() {
   browser.storage.local.get(["quota", "sites", "config"]).then(data => {
     if (data.quota && data.quota.current >= 0 && data.quota.lastUpdated > 0) {
@@ -112,7 +86,7 @@ function initExtension() {
     }
     if (data.sites) {
       console.debug(data.sites)
-      sites = data.sites;
+      tabManager.sites = data.sites;
     }
     if (data.config) {
       console.debug(data.config)
@@ -130,12 +104,9 @@ function initExtension() {
 
     if (message.action == "contentOnload") {
       // From content script
-      updateTabs(appState, "contentOnload");
-    } else if (message.action == "contentOnunload") {
-      // From content script
-      updateTabs(appState, "contentOnunload");
+      sendResponse({ action:"TODO" });
     } else if (message.action == "requestList") {
-      sendResponse({ allow: sites.allow, block: sites.block });
+      sendResponse({ allow: tabManager.sites.allow, block: tabManager.sites.block });
     } else if (message.action == "saveList") {
       let sitesTmp = {
         block: message.block.map(url => removeProtocol(url)),
@@ -144,7 +115,7 @@ function initExtension() {
       browser.storage.local.set({
         sites: sitesTmp
       }).then(() => {
-        sites = sitesTmp;
+        tabManager.sites = sitesTmp;
         sendResponse({ success: true })
       });
       return true; // For async
@@ -166,6 +137,11 @@ function initExtension() {
       sendResponse(quota)
     } else if (message.action == "visibilitychange") {
       sendResponse({ message: "OK" })
+      updateTabs(appState, "visibilitychange");
+    } else if (message.action == "idleStateChange") {
+      sendResponse({ message: "OK" })
+      tabManager.updateIdleState(sender.tab.id, message.idle);
+      updateTabs(appState, "visibilitychange");
     } else if (message.action == "onClosePopup") {
       popupVisibleCount--;
   
@@ -250,6 +226,9 @@ browser.tabs.onCreated.addListener(event => {
 });
 */
 browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === 'loading') {
+    tabManager.updateIdleState(tab.id, false)
+  }
   if (changeInfo.status === 'complete') {
     updateTabs(appState, "tabs.onUpdated");
   }
@@ -274,12 +253,11 @@ browser.tabs.onUpdated.addListener(window => {
 */
 let lang = getUserLanguage();
 const blockedPageUrl = browser.runtime.getURL("blocked.html");
+const idlePageUrl = browser.runtime.getURL("idle.html");
 
 
 const welcomeUpdatedVersion = "1.0.3";
 browser.runtime.onInstalled.addListener((details) => {
-  console.log("browser.runtime.onInstalled")
-  console.log(details)
 
   if (details.reason === "update") {
     const result = compareVersions(welcomeUpdatedVersion, details.previousVersion);
@@ -302,23 +280,24 @@ function getIconSuffix(percentage) {
 async function updateTabs(appState, reason) {
   console.debug("updateTabs reason=%s", reason)
   const wins = await browser.windows.getAll();
-  //browser.windows.getAll().then(wins=>{
   const visibleWins = wins.filter(win => win.state == "normal").map(win => win.id);
+  
   const tabs = await browser.tabs.query({ active: true });
-  // browser.tabs.query({ active: true }).then(tabs => {
+  const blockedTabs = tabManager.updateTabInfo(tabs, visibleWins);
 
-  const items = tabs.map((tab) => {
-    return {
-      url: tab.url,
-      title: tab.title,
-      windowId: tab.windowId,
-      id: tab.id,
-      blocked: visibleWins.includes(tab.windowId) && isUrlBlocked(tab.url, sites.block, sites.allow)
-    }
+  tabManager.blockedTabs.forEach((tab)=>{
+    browser.tabs.sendMessage(tab.id, 
+      { 
+        action:"activate",
+        idlePageUrl:idlePageUrl,
+        enableIdleDetection: config.enableIdleDetection}
+    ).then(response => {
+      console.debug("Received response:", response);
+    }).catch(err => {
+      console.error("Error sending message:", err);
+    });
   });
-  const blockedTabs = items.filter(tab => tab.blocked);
-  appState.blockedTabIds = blockedTabs.map(tab => tab.id)
-  appState.isBlocking = blockedTabs.length > 0;
+  appState.isBlocking = tabManager.blockedTabIds.length > 0;
   const percentage = (quota.current / quota.max) * 100;
   const iconSuffix = getIconSuffix(percentage);
   const themeInfo = await browser.theme.getCurrent(visibleWins[0]);
@@ -327,7 +306,7 @@ async function updateTabs(appState, reason) {
     const bgColor = themeInfo.colors.toolbar || themeInfo.colors.frame;
     brightness = calculateBrightness(parseColor(bgColor));
   }
-  for (const item of items) {
+  for (const item of tabManager.tabs) {
     let iconPrefix = (item.blocked) ? "icon/dark/active_" : "icon/dark/inactive_"
     if (brightness > 0.5) {
       iconPrefix = (item.blocked) ? "icon/light/active_" : "icon/light/inactive_"
@@ -371,9 +350,10 @@ function decrement() {
     quota.current = Math.max(0, quota.current - 1);
     updateBadge(quota)
     if (quota.current <= 0) {
-      appState.blockedTabIds.forEach((activeTabId) => {
+      // Start blocking
+      tabManager.blockedTabIds.forEach((activeTabId) => {
 
-        browser.tabs.sendMessage(activeTabId, { blocked: true, remaining: quota.current, blockedPage: blockedPageUrl }).then(response => {
+        browser.tabs.sendMessage(activeTabId, { action:"block", remaining: quota.current, blockedPage: blockedPageUrl }).then(response => {
           console.debug("Received response:", response);
         }).catch(err => {
           console.error("Error sending message:", err);

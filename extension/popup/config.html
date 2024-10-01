@@ -14,7 +14,7 @@
         <ul class="nav__list">
             <li class="nav__item"><a href="popup.html" class="nav__link" data-i18n="navTop">Home</a></li>
             <li class="nav__item"><a href="list.html" class="nav__link" data-i18n="navSites">Sites</a></li>
-            <li class="nav__item"><a href="config.html" class="nav__link" data-i18n="navConfig">Config</a></li>
+            <li class="nav__item nav__item--selected"><a href="config.html" class="nav__link" data-i18n="navConfig">Config</a></li>
             <li class="nav__item"><a id="js_help" href="#" class="nav__link" data-i18n="navHelp">Help</a></li>
         </ul>
     </nav>
@@ -57,7 +57,13 @@
                             <input type="checkbox" id="js_showQuotaOnBadge" name="js_showQuotaOnBadge">
                             <span data-i18n="labelShowQuotaOnBadge">Display remaining time on badge</span>
                         </label>
-                        
+                    </div>
+
+                    <div class="config-item">
+                        <label for="js_enableIdleDetection">
+                            <input type="checkbox" id="js_enableIdleDetection" name="js_enableIdleDetection">
+                            <span data-i18n="labelEnableIdleDetection">Enable idle detection</span>
+                        </label>
                     </div>
                     
                 </section>
