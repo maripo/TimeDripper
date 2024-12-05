@@ -191,17 +191,27 @@ function saveQuota() {
     quota: quota
   }).then(() => {
     updateBadge(quota);
+    const message = {
+      action: "notifyUpdateQuota",
+      quota: quota
+    };
     if (popupVisibleCount > 0) {
       try {
 
-        browser.runtime.sendMessage({
-          action: "notifyUpdateQuota",
-          quota: quota
-        });
+        browser.runtime.sendMessage(message);
       } catch (e) {
         // TODO
       }
     }
+    tabManager.blockedTabs.forEach((tab)=>{
+      browser.tabs.sendMessage(tab.id, 
+        message
+      ).then(response => {
+        console.debug("Received response:", response);
+      }).catch(err => {
+        console.error("Error sending message:", err);
+      });
+    });
   });
 
 }

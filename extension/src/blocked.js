@@ -37,14 +37,14 @@ function updateQuotaDisplay(quota) {
   document.getElementById('js_currentQuota').textContent = formatTime(quota.current);
   document.getElementById('js_maxQuota').textContent = formatTime(quota.max);
   countdown();
-  document.getElementById('originalLinkContainer').style.display = 
-    (quota.current > 0) ? "block" : "none";
+  document.getElementById('js_backUIContainer').style.visibility = 
+    (quota.current > 0) ? "visible" : "hidden";
 }
 
 function countdown () {
   const currentTime = Date.now();
   const timeToNextRecovery = Math.max(0, Math.floor((nextUpdate - currentTime) / 1000));
-  console.debug("timeToNextRecovery(blocked.html)=" + timeToNextRecovery)
+  // console.debug("timeToNextRecovery(blocked.html)=" + timeToNextRecovery)
   document.getElementById("js_labelNextRecovery").style.visibility = "visible"
   document.getElementById('js_timeToNextRecovery').textContent = timeToNextRecovery;
 }
@@ -61,13 +61,28 @@ function getQueryParam(name) {
   return urlParams.get(name);
 }
 browser.runtime.sendMessage({action: "transition"}).then(response => {
-  console.debug(response);
+  // console.debug(response);
 });
-browser.r
+
 const originalUrl = getQueryParam('url');
+const isOverlay = getQueryParam('overlay');
 if (originalUrl) {
-  const container = document.getElementById('js_originalLink');
-  container.href = decodeURIComponent(originalUrl);
-  container.innerText = decodeURIComponent(originalUrl);
+  const link = document.getElementById('js_originalLink');
+  link.href = decodeURIComponent(originalUrl);
+  link.innerText = decodeURIComponent(originalUrl);
 }
+if (isOverlay == "true") {
+  console.log("isOverlay=true");
+  document.getElementById("js_closeOverlayLinkContainer").style.display = "block";
+  document.getElementById("js_originalLinkContainer").style.display = "none";
+  const link = document.getElementById('js_closeOverlay');
+  link.addEventListener("click", ()=>{
+    window.parent.postMessage('iframe-clicked', '*');
+  });
+}
+
+window.addEventListener('message', (event) => {
+  console.log('Received message from parent:', event.data);
+});
+
 setInterval(countdown, 1000);

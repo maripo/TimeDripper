@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "TimeDripper",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Limits access time to specific websites. The access time gradually recovers at a consistent pace.",
     "icons": {
       "16": "icon/app/app_icon_16.png",
@@ -20,7 +20,11 @@
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
-        "js": ["src/idle-detector.js", "src/content-script.js"],
+        "js": [
+          "src/page-overlay.js",
+          "src/idle-detector.js",
+          "src/content-script.js"
+        ],
         "run_at": "document_start"
       }
     ],
